@@ -1,129 +1,657 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>UTKARSH PAL</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Utkarsh Pal — AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0a0a0a;
+  --paper:#f5f2ed;
+  --paper2:#ede9e3;
+  --rule:rgba(10,10,10,0.12);
+  --rule-strong:rgba(10,10,10,0.55);
+  --accent:#c8401a;
+  --muted:#6b6560;
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'Instrument Sans',sans-serif;
+  --mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  cursor:none;
+}
+/* custom cursor */
+#cursor{
+  position:fixed;width:10px;height:10px;
+  background:var(--ink);border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:width .15s,height .15s,background .15s;
+}
+#cursor.big{width:36px;height:36px;background:transparent;border:1.5px solid var(--ink);mix-blend-mode:multiply;}
+/* ── HEADER ── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;
+  height:56px;
+  background:var(--paper);
+  border-bottom:1px solid var(--rule-strong);
+}
+.h-name{
+  font-family:var(--mono);font-size:.75rem;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink);
+}
+.h-nav{display:flex;gap:32px;list-style:none}
+.h-nav a{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;text-decoration:none;color:var(--muted);
+  transition:color .2s;
+}
+.h-nav a:hover{color:var(--ink)}
+.h-resume{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;text-decoration:none;color:var(--ink);
+  border-bottom:1px solid var(--ink);padding-bottom:1px;
+  transition:color .2s;
+}
+.h-resume:hover{color:var(--accent)}
+/* ── HERO ── */
+#hero{
+  margin-top:56px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:calc(100vh - 56px);
+  border-bottom:1px solid var(--rule-strong);
+}
+.hero-left{
+  padding:48px 48px 48px 48px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  border-right:1px solid var(--rule-strong);
+}
+.hero-index{
+  font-family:var(--mono);font-size:.68rem;color:var(--muted);
+  letter-spacing:.18em;text-transform:uppercase;
+  opacity:0;animation:appear .5s .1s forwards;
+}
+.hero-headline{
+  font-family:var(--serif);
+  font-size:clamp(3.8rem,6.5vw,6.2rem);
+  line-height:.95;
+  letter-spacing:-.02em;
+  opacity:0;animation:appear .7s .25s forwards;
+}
+.hero-headline em{
+  font-style:italic;color:var(--accent);
+}
+.hero-sub{
+  font-size:1rem;line-height:1.6;color:var(--muted);max-width:400px;
+  opacity:0;animation:appear .6s .45s forwards;
+}
+.hero-right{
+  padding:48px 48px 48px 48px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.socials-label{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:20px;
+  opacity:0;animation:appear .5s .55s forwards;
+}
+.socials-list{
+  display:flex;flex-direction:column;gap:0;
+  opacity:0;animation:appear .6s .65s forwards;
+}
+.social-link{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 0;
+  border-top:1px solid var(--rule);
+  text-decoration:none;color:var(--ink);
+  font-size:.88rem;font-weight:500;
+  transition:color .18s;
+  position:relative;overflow:hidden;
+}
+.social-link:last-child{border-bottom:1px solid var(--rule)}
+.social-link::after{
+  content:'↗';font-size:.8rem;color:var(--muted);
+  transition:transform .2s,color .2s;
+}
+.social-link:hover{color:var(--accent)}
+.social-link:hover::after{transform:translate(2px,-2px);color:var(--accent)}
+.hero-stat-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  border:1px solid var(--rule);margin-top:auto;
+  opacity:0;animation:appear .5s .8s forwards;
+}
+.hero-stat{
+  padding:14px 16px;background:var(--paper2);
+}
+.stat-num{font-family:var(--serif);font-size:1.8rem;line-height:1}
+.stat-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+/* ── SECTION WRAPPER ── */
+.section-wrap{border-bottom:1px solid var(--rule-strong)}
+.section-inner{max-width:1200px;margin:0 auto;padding:48px 48px}
+.section-header{
+  display:flex;align-items:baseline;gap:24px;
+  margin-bottom:32px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--rule);
+}
+.sec-num{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--muted);min-width:40px;
+}
+.sec-title{
+  font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);
+  line-height:1;letter-spacing:-.02em;
+}
+/* ── SKILLS ── */
+.skills-table{width:100%;border-collapse:collapse}
+.skills-table tr{border-top:1px solid var(--rule)}
+.skills-table tr:last-child{border-bottom:1px solid var(--rule)}
+.skills-table td{padding:12px 0;vertical-align:top}
+.skills-table td:first-child{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--muted);width:180px;
+  padding-right:24px;padding-top:14px;
+}
+.skill-pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;
+  padding:5px 12px;border:1px solid var(--rule-strong);
+  color:var(--ink);background:transparent;
+  transition:background .15s,color .15s;
+}
+.pill:hover{background:var(--ink);color:var(--paper)}
+/* ── PROJECTS ── */
+.projects-list{display:flex;flex-direction:column;gap:0}
+.proj-row{
+  display:grid;grid-template-columns:60px 1fr auto;
+  align-items:start;gap:20px;
+  padding:20px 0;
+  border-top:1px solid var(--rule);
+  cursor:pointer;
+  transition:background .15s;
+}
+.proj-row:last-child{border-bottom:1px solid var(--rule)}
+.proj-row:hover .proj-title{color:var(--accent)}
+.proj-row:hover .proj-arrow{transform:translate(3px,-3px)}
+.proj-num{
+  font-family:var(--mono);font-size:.68rem;color:var(--muted);
+  letter-spacing:.1em;padding-top:4px;
+}
+.proj-body{}
+.proj-title{
+  font-family:var(--serif);font-size:1.25rem;
+  letter-spacing:-.01em;margin-bottom:5px;
+  transition:color .2s;
+}
+.proj-summary{font-size:.85rem;color:var(--muted);line-height:1.55;max-width:580px;margin-bottom:10px}
+.proj-chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;
+  padding:3px 9px;background:var(--paper2);color:var(--muted);
+}
+.proj-arrow{font-size:1.1rem;color:var(--muted);transition:transform .2s;padding-top:4px}
+/* ── MODAL ── */
+.modal-bg{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(245,242,237,0.96);
+  backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.modal-bg.open{opacity:1;pointer-events:all}
+.modal-card{
+  background:var(--paper);
+  border:1px solid var(--rule-strong);
+  max-width:640px;width:100%;
+  padding:48px;
+  position:relative;
+  transform:translateY(16px);
+  transition:transform .22s;
+  max-height:90vh;overflow-y:auto;
+}
+.modal-bg.open .modal-card{transform:translateY(0)}
+.modal-close{
+  position:absolute;top:20px;right:20px;
+  background:none;border:none;cursor:pointer;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--muted);
+  transition:color .2s;
+}
+.modal-close:hover{color:var(--ink)}
+.modal-label{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:16px;
+}
+.modal-title{
+  font-family:var(--serif);font-size:1.9rem;
+  letter-spacing:-.02em;margin-bottom:28px;line-height:1.1;
+}
+.modal-points{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.modal-points li{
+  font-size:.9rem;line-height:1.7;color:var(--muted);
+  padding-left:20px;position:relative;
+}
+.modal-points li::before{
+  content:'—';position:absolute;left:0;color:var(--ink);font-size:.85rem;
+}
+.modal-footer{display:flex;flex-wrap:wrap;gap:8px;padding-top:24px;border-top:1px solid var(--rule)}
+/* ── EXPERIENCE ── */
+.exp-item{
+  display:grid;grid-template-columns:200px 1fr;
+  gap:40px;padding:28px 0;
+  border-top:1px solid var(--rule);
+}
+.exp-item:last-child{border-bottom:1px solid var(--rule)}
+.exp-meta{}
+.exp-period{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:6px;
+}
+.exp-company{font-family:var(--mono);font-size:.72rem;color:var(--ink)}
+.exp-detail{}
+.exp-role{font-family:var(--serif);font-size:1.3rem;letter-spacing:-.01em;margin-bottom:10px}
+.exp-points{list-style:none;display:flex;flex-direction:column;gap:7px}
+.exp-points li{font-size:.88rem;line-height:1.6;color:var(--muted);padding-left:20px;position:relative}
+.exp-points li::before{content:'—';position:absolute;left:0;color:var(--ink)}
+/* ── CERTS ── */
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-strong);border:1px solid var(--rule-strong)}
+.cert-item{
+  background:var(--paper);padding:20px 24px;
+  transition:background .15s;
+}
+.cert-item:hover{background:var(--paper2)}
+.cert-platform{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:10px;
+}
+.cert-name{font-size:.95rem;font-weight:500;line-height:1.4;color:var(--ink)}
+/* ── EDUCATION ── */
+.edu-item{
+  display:grid;grid-template-columns:200px 1fr;gap:40px;
+  padding:24px 0;border-top:1px solid var(--rule);
+}
+.edu-item:last-child{border-bottom:1px solid var(--rule)}
+.edu-year{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);
+}
+.edu-degree{font-family:var(--serif);font-size:1.3rem;letter-spacing:-.01em;margin-bottom:6px}
+.edu-school{font-size:.88rem;color:var(--muted)}
+/* ── FOOTER ── */
+footer{
+  max-width:1200px;margin:0 auto;
+  padding:32px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-copy{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.footer-back{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;
+  text-transform:uppercase;text-decoration:none;color:var(--ink);
+  border-bottom:1px solid var(--ink);padding-bottom:1px;
+  transition:color .2s;
+}
+.footer-back:hover{color:var(--accent)}
+/* ── ANIMATIONS ── */
+@keyframes appear{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.reveal.on{opacity:1;transform:none}
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  header{padding:0 20px}
+  .h-nav{display:none}
+  #hero{grid-template-columns:1fr}
+  .hero-left{padding:32px 24px;border-right:none;border-bottom:1px solid var(--rule-strong)}
+  .hero-right{padding:28px 24px}
+  .section-inner{padding:36px 24px}
+  .proj-row{grid-template-columns:40px 1fr auto}
+  .exp-item,.edu-item{grid-template-columns:1fr;gap:8px}
+  .cert-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
+}
+</style>
+</head>
+<body>
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+<div id="cursor"></div>
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>MY PORTFOLIO</h1>
-						<p>A showcase for my projects and abilities.</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+<!-- HEADER -->
+<header>
+  <a class="h-name" href="#">Utkarsh Pal</a>
+  <ul class="h-nav">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+  <a class="h-resume" href="UtkarshResume__1_.pdf" target="_blank">Download CV ↓</a>
+</header>
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">UTKARSH PAL</a>
-					</header>
+<!-- MODAL -->
+<div class="modal-bg" id="modal-bg">
+  <div class="modal-card">
+    <button class="modal-close" id="modal-close">Close ✕</button>
+    <div class="modal-label" id="m-label"></div>
+    <div class="modal-title" id="m-title"></div>
+    <ul class="modal-points" id="m-points"></ul>
+    <div class="modal-footer" id="m-tags"></div>
+  </div>
+</div>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="https://drive.google.com/file/d/12dK8rRHbeDrRFETS0LeZn0TUugpyl5BC/view?usp=sharing">Resume</a></li>
-							
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/utkarsh26pal/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
-							<li><a href="https://github.com/Utti26" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-							<li><a href="https://x.com/Utti_26" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						</ul>
-					</nav>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-index">AI Engineer · NLP & LLM Specialist</div>
+    <h1 class="hero-headline">Building<br/>intelligent<br/><em>systems</em></h1>
+    <p class="hero-sub">Computer Science post-graduate specialising in Natural Language Processing, Large Language Models, and adaptive AI applications — from research to deployed products.</p>
+  </div>
+  <div class="hero-right">
+    <div>
+      <p class="socials-label">Contact & Profiles</p>
+      <div class="socials-list">
+        <a class="social-link" href="https://linkedin.com/in/utkarsh-pal" target="_blank">LinkedIn</a>
+        <a class="social-link" href="https://github.com/utkarsh-pal" target="_blank">GitHub</a>
+        <a class="social-link" href="https://leetcode.com/utkarsh-pal" target="_blank">LeetCode</a>
+        <a class="social-link" href="mailto:karn.26p@gmail.com">karn.26p@gmail.com</a>
+        <a class="social-link" href="tel:+917355495416">+91 73554 95416</a>
+        <a class="social-link" href="UtkarshResume__1_.pdf" target="_blank">Download Résumé (PDF)</a>
+      </div>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">AI Projects</div>
+      </div>
+      <div class="hero-stat" style="border-left:1px solid var(--rule)">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="hero-stat" style="border-top:1px solid var(--rule)">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+      <div class="hero-stat" style="border-left:1px solid var(--rule);border-top:1px solid var(--rule)">
+        <div class="stat-num">MCA</div>
+        <div class="stat-label">BHU, 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-				<!-- Main -->
-					<div id="main">
+<!-- SKILLS -->
+<div class="section-wrap" id="skills">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Technical Skills</h2>
+    </div>
+    <table class="skills-table">
+      <tr class="reveal">
+        <td>Languages</td>
+        <td><div class="skill-pills">
+          <span class="pill">Python</span><span class="pill">Java</span><span class="pill">C</span><span class="pill">C++</span>
+        </div></td>
+      </tr>
+      <tr class="reveal">
+        <td>AI / ML</td>
+        <td><div class="skill-pills">
+          <span class="pill">NLP</span><span class="pill">LLMs</span><span class="pill">Deep Learning</span><span class="pill">Computer Vision</span><span class="pill">Neuroevolution</span>
+        </div></td>
+      </tr>
+      <tr class="reveal">
+        <td>Frameworks</td>
+        <td><div class="skill-pills">
+          <span class="pill">PyTorch</span><span class="pill">HuggingFace Transformers</span><span class="pill">scikit-learn</span><span class="pill">FastAPI</span><span class="pill">Flask</span><span class="pill">Gradio</span><span class="pill">Diffusers</span>
+        </div></td>
+      </tr>
+      <tr class="reveal">
+        <td>Data & Tools</td>
+        <td><div class="skill-pills">
+          <span class="pill">Pandas</span><span class="pill">NumPy</span><span class="pill">OpenCV</span><span class="pill">Docker</span><span class="pill">MySQL</span><span class="pill">SQLite</span><span class="pill">Postman</span>
+        </div></td>
+      </tr>
+      <tr class="reveal">
+        <td>Generative AI</td>
+        <td><div class="skill-pills">
+          <span class="pill">Stable Diffusion</span><span class="pill">GPT-2 / GPT-3</span><span class="pill">Qwen-VL</span><span class="pill">VisionEncoderDecoder</span>
+        </div></td>
+      </tr>
+      <tr class="reveal">
+        <td>Fundamentals</td>
+        <td><div class="skill-pills">
+          <span class="pill">DSA</span><span class="pill">OOP</span><span class="pill">REST APIs</span><span class="pill">HuggingFace Spaces</span>
+        </div></td>
+      </tr>
+    </table>
+  </div>
+</div>
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<h3>AI whisperer by day, blockchain wizard by night.</h3>
-								</header>
-								<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="#" class="button large">Check it out</a></li>
-								</ul>
-							</article>
+<!-- PROJECTS -->
+<div class="section-wrap" id="projects">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Selected Projects</h2>
+    </div>
+    <div class="projects-list" id="proj-list"></div>
+  </div>
+</div>
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<h2><a href="#">Flappy Bird AI</a></h2>
-									</header>
-									<a href="https://github.com/Utti26/FlappyBirdAI" class="image fit"><img src="images/flappybird.jpg" alt="" /></a>
-									<p>Flappy Bird AI leverages NEAT-Python to train an agent to autonomously play the game by optimizing its survival through trial-and-error interactions.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/Utti26/FlappyBirdAI" class="button">Check it out</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="#">GenAI</a></h2>
-									</header>
-									<a href="https://github.com/Utti26/GenAI" class="image fit"><img src="images/GenAI.jpg" alt="" /></a>
-									<p>A comprehensive project combining text-to-image, multilingual text-to-image, and image-totext generation with advanced AI models like Stable Diffusion and VisionEncoderDecoderModel.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/Utti26/GenAI" class="button">Check it out</a></li>
-									</ul>
-								</article>
-					</div>
+<!-- EXPERIENCE -->
+<div class="section-wrap" id="experience">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Experience</h2>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Feb 2025 — May 2025</div>
+        <div class="exp-company">Granville Tech Pvt. Ltd.<br/>Kampala, Uganda</div>
+      </div>
+      <div class="exp-detail">
+        <div class="exp-role">NLP / LLM Specialist</div>
+        <ul class="exp-points">
+          <li>Delivered production NLP and LLM solutions for an adaptive learning initiative targeting secondary schools.</li>
+          <li>Architected a personalised educational platform designed to reduce dropout rates through AI-driven content adaptation in Uganda.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Oct 2022 — Mar 2023</div>
+        <div class="exp-company">Rajkija Engineering College<br/>Banda, Uttar Pradesh</div>
+      </div>
+      <div class="exp-detail">
+        <div class="exp-role">Java Trainer</div>
+        <ul class="exp-points">
+          <li>Delivered core and advanced Java training sessions to undergraduate engineering students.</li>
+          <li>Designed interactive teaching materials and hands-on coding exercises for improved comprehension.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3><p>Narayan Trolly Repairs, Radha Nagar<br/> Chhibramau
-								(Kannauj)-209721<br />Uttar Pradesh, India</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(+91) 7355495416</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">karn.26p@gmail.com</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="https://x.com/Utti_26" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="https://www.linkedin.com/in/utkarsh26pal/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
-							<li><a href="https://github.com/Utti26" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+<!-- CERTIFICATIONS -->
+<div class="section-wrap" id="certifications">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Certifications</h2>
+    </div>
+    <div class="cert-grid reveal">
+      <div class="cert-item">
+        <div class="cert-platform">NPTEL</div>
+        <div class="cert-name">Introduction to Large Language Models (LLMs)</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-platform">NPTEL</div>
+        <div class="cert-name">Deep Learning for Computer Vision</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-platform">Coursera</div>
+        <div class="cert-name">Neural Networks and Deep Learning</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-platform">Coursera</div>
+        <div class="cert-name">Supervised Machine Learning: Regression and Classification</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li> Utkarsh Pal</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+<!-- EDUCATION -->
+<div class="section-wrap" id="education">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title">Education</h2>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-year">2023 — 2025</div>
+      <div>
+        <div class="edu-degree">Master of Computer Applications</div>
+        <div class="edu-school">Banaras Hindu University, Varanasi</div>
+      </div>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-year">2018 — 2021</div>
+      <div>
+        <div class="edu-degree">B.Sc. (Hons.) Computer Science</div>
+        <div class="edu-school">Acharya Narendra Dev College, University of Delhi, New Delhi</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-			</div>
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2025 Utkarsh Pal · karn.26p@gmail.com</span>
+  <a class="footer-back" href="#hero">Back to top ↑</a>
+</footer>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+<script>
+// Cursor
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a,button,.proj-row,.pill,.cert-item').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
 
-	</body>
+// Projects
+const projects = [
+  {
+    num:'01', label:'NLP · FastAPI · Docker',
+    title:'Educational Content Generation API',
+    summary:'AI-powered API to automate educational content creation, quality refinement, and bias detection using transformer models.',
+    points:[
+      'Built with FastAPI and pre-trained transformer models for high-quality text generation.',
+      'Implemented modular pipelines covering readability enhancement, coherence scoring, and fairness assessment.',
+      'Containerised with Docker for reproducible, scalable deployment across environments.',
+      'Applicable to automated content generation in education, e-learning, and research publishing.',
+    ],
+    tags:['FastAPI','Transformers','Docker','NLP','Bias Detection','Python'],
+  },
+  {
+    num:'02', label:'ML · Flask · scikit-learn',
+    title:'Predictive Analysis for Manufacturing Operations',
+    summary:'RESTful API that predicts machine downtime from real manufacturing sensor data, enabling proactive maintenance.',
+    points:[
+      'Implemented a Decision Tree Classifier with scikit-learn to forecast machine failures from operational parameters.',
+      'Designed REST endpoints for data ingestion, on-demand model training, and real-time JSON predictions.',
+      'Data pipeline built with Pandas and NumPy; validated with Postman and cURL for robustness.',
+    ],
+    tags:['Flask','scikit-learn','Pandas','NumPy','REST API','Predictive ML'],
+  },
+  {
+    num:'03', label:'Neuroevolution · NEAT · Pygame',
+    title:'Flappy Bird AI — NEAT Autonomous Agent',
+    summary:'Self-learning agent that masters Flappy Bird through neuroevolution, requiring zero hand-crafted rules.',
+    points:[
+      'Applied the NEAT (NeuroEvolution of Augmenting Topologies) algorithm to evolve neural network weights and architectures simultaneously.',
+      'Simulates a full, physics-accurate gameplay environment in Python with Pygame.',
+      'Demonstrates evolutionary algorithms as a viable approach for adaptive control in game AI.',
+    ],
+    tags:['Python','NEAT','Pygame','Neuroevolution','Game AI'],
+  },
+  {
+    num:'04', label:'OCR · Transformers · Gradio',
+    title:'OCR — Contextual Text Extraction & Highlighting',
+    summary:'Interactive tool that extracts text from images and highlights any user-specified keyword in the OCR output.',
+    points:[
+      'Backend built on PyTorch, Hugging Face Transformers, and Qwen-VL multimodal utilities for precise text extraction.',
+      'Gradio frontend provides an accessible, no-code interactive interface for end users.',
+      'Deployed publicly on Hugging Face Spaces for immediate accessibility.',
+    ],
+    tags:['PyTorch','Transformers','Qwen-VL','Gradio','HuggingFace Spaces','OCR'],
+  },
+  {
+    num:'05', label:'Generative AI · Multimodal',
+    title:'Multimodal Text-to-Image & Image-to-Text Pipeline',
+    summary:'End-to-end generative pipeline supporting bidirectional translation between text and image modalities.',
+    points:[
+      'Unified Stable Diffusion, GPT-2/3, and VisionEncoderDecoderModel into a single coherent pipeline.',
+      'Implemented with Transformers, Diffusers, Torch, and OpenCV for efficient multimodal processing.',
+      'Supports both image captioning and text-conditioned image synthesis in one application.',
+    ],
+    tags:['Stable Diffusion','GPT-2/3','Diffusers','OpenCV','Torch','Multimodal'],
+  },
+];
+
+const list = document.getElementById('proj-list');
+projects.forEach(p => {
+  const row = document.createElement('div');
+  row.className = 'proj-row reveal';
+  row.innerHTML = `
+    <div class="proj-num">${p.num}</div>
+    <div class="proj-body">
+      <div class="proj-title">${p.title}</div>
+      <div class="proj-summary">${p.summary}</div>
+      <div class="proj-chips">${p.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+    </div>
+    <div class="proj-arrow">↗</div>`;
+  row.addEventListener('click', () => openModal(p));
+  list.appendChild(row);
+});
+
+// Modal
+const bg = document.getElementById('modal-bg');
+function openModal(p){
+  document.getElementById('m-label').textContent = p.label;
+  document.getElementById('m-title').textContent = p.title;
+  document.getElementById('m-points').innerHTML = p.points.map(x=>`<li>${x}</li>`).join('');
+  document.getElementById('m-tags').innerHTML = p.tags.map(t=>`<span class="pill">${t}</span>`).join('');
+  bg.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){bg.classList.remove('open');document.body.style.overflow='';}
+document.getElementById('modal-close').addEventListener('click',closeModal);
+bg.addEventListener('click', e => { if(e.target===bg) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
+}, {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
 </html>
